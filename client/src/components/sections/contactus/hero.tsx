@@ -50,7 +50,7 @@ export default function ContactHero() {
 					{/* ── LEFT: Avatar + checklist ── */}
 					<div className="flex flex-col gap-10">
 						{/* Avatar + name (Centered) */}
-						<FadeIn direction="left" delay={0.1} className="flex flex-col items-center gap-3 text-center">
+						<FadeIn delay={0.1} className="flex flex-col items-center gap-3 text-center">
 							<div className="h-[100px] w-[100px] overflow-hidden rounded-full -mt-8 shadow-md">
 								<img
 									src="/assets/contactus/image.webp"
@@ -69,7 +69,7 @@ export default function ContactHero() {
 							{checklist.map((item, index) => {
 								const Icon = item.icon;
 								return (
-									<FadeIn key={item.title} direction="left" delay={0.2 + index * 0.1}>
+									<FadeIn key={item.title} delay={0.2 + index * 0.1}>
 										<div className="flex items-start gap-4 transition-transform hover:translate-x-1">
 											<div className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#eef2ff]">
 												<Icon className="h-[25px] w-[25px] text-[#6366f1]" />
@@ -86,7 +86,7 @@ export default function ContactHero() {
 					</div>
 
 					{/* ── RIGHT: Cal.com Booking Embed ── */}
-					<FadeIn direction="right" className="rounded-[24px] bg-[#f1f5f9] p-4 shadow-sm overflow-hidden">
+					<FadeIn delay={0.3} className="rounded-[24px] bg-[#f1f5f9] p-4 shadow-sm overflow-hidden">
 						<CalEmbed />
 					</FadeIn>
 				</div>

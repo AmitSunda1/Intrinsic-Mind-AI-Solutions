@@ -34,7 +34,7 @@ export default function FAQ() {
   return (
     <section className="bg-white px-6 py-16 md:py-24 lg:px-20">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-12 lg:flex-row">
-        <FadeIn direction="left" className="flex max-w-[340px] flex-col gap-8">
+        <FadeIn delay={0.1} className="flex max-w-[340px] flex-col gap-8">
           <h2 className="text-[32px] md:text-[40px] font-semibold text-[#0a1314]">Do you have a question?</h2>
           <div className="flex h-[48px] items-center rounded-full bg-transparent p-1 shadow-none transition-transform hover:scale-105">
             <div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white shadow-none">
@@ -45,7 +45,7 @@ export default function FAQ() {
             </div>
           </div>
         </FadeIn>
-        <FadeIn direction="right" className="flex flex-1 flex-col gap-6">
+        <FadeIn delay={0.2} className="flex flex-1 flex-col gap-6">
           {faqs.map((faq, index) => (
             <div key={faq.question} className="border-b border-[#e6e6e6] pb-6">
               <button
