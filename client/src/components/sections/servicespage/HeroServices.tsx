@@ -93,7 +93,7 @@ export default function HeroServices() {
               <FadeIn
                 key={stat.value}
                 delay={0.2 + index * 0.1}
-                className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm transition-transform hover:-translate-y-1"
+                className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm "
               >
                 <p className="text-[28px] md:text-[32px] font-extrabold leading-none">{renderStatValue(stat.value)}</p>
                 <p className="mt-2 text-[14px] leading-[1.4] text-white/55">{stat.label}</p>
@@ -102,7 +102,7 @@ export default function HeroServices() {
           </div>
 
           {/* Bottom row — full-width card */}
-          <FadeIn delay={0.4} className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm transition-transform hover:-translate-y-1">
+          <FadeIn delay={0.4} className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm ">
             <p className="text-[28px] md:text-[32px] font-extrabold leading-none">{renderStatValue(stats[2].value)}</p>
             <p className="mt-2 text-[13px] leading-[1.4] text-white/55">{stats[2].label}</p>
           </FadeIn>

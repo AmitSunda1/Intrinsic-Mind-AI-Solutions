@@ -53,7 +53,7 @@ export default function ContactHero() {
 						<FadeIn delay={0.1} className="flex flex-col items-center gap-3 text-center">
 							<div className="h-[100px] w-[100px] overflow-hidden rounded-full -mt-8 shadow-md">
 								<img
-									src="/assets/contactus/image.webp"
+									src="/assets/contactUs/image.webp"
 									alt="Kevin Young"
 									className="h-full w-full object-cover transition-transform hover:scale-110"
 								/>
@@ -86,7 +86,7 @@ export default function ContactHero() {
 					</div>
 
 					{/* ── RIGHT: Cal.com Booking Embed ── */}
-					<FadeIn delay={0.3} className="rounded-[24px] bg-[#f1f5f9] p-4 shadow-sm overflow-hidden">
+					<FadeIn delay={0.3} className="rounded-[24px] bg-[#f1f5f9] p-0 shadow-sm overflow-hidden">
 						<CalEmbed />
 					</FadeIn>
 				</div>

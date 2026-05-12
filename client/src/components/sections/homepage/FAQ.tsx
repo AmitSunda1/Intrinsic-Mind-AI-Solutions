@@ -8,23 +8,23 @@ import FadeIn from "../../ui/FadeIn";
 const faqs = [
   {
     question: "We already have AI tools running. Can you still help?",
-    answer: "Yes. Most enterprises already have AI tools in place. The gap is often governance, data readiness, and an overarching strategy that ties everything together. We help close that gap.",
+    answer: "Yes - this is the most common situation we walk into. Most enterprises have the tools. What's missing is the governance layer. We assess what's running, identify the gaps, and build the framework to manage it.",
   },
   {
     question: "What does the AI governance framework cover?",
-    answer: "Our framework covers data privacy, security protocols, ethical AI usage, compliance with regulations, and establishing clear guidelines for your internal teams.",
+    answer: "Three areas: how tools are orchestrated, how risk is managed, and how value from each tool is measured and reported to leadership. Tailored to your org - not a generic template.",
   },
   {
     question: "How do you assess data readiness?",
-    answer: "We evaluate your current data infrastructure, quality, accessibility, and security measures to determine if your organization is prepared to implement and scale AI solutions effectively.",
+    answer: "A structured assessment - how your data is organized, governed, and accessible across systems. We identify what needs to change and build the remediation plan.",
   },
   {
     question: "What industries do you specialize in?",
-    answer: "We have experience across various sectors, including healthcare, finance, retail, and manufacturing, tailoring our AI strategies to meet industry-specific challenges and compliance requirements.",
+    answer: "Mid-market and large enterprises - with deep experience in federal agencies, financial services, and retail. Our frameworks adapt to your regulatory and operational environment.",
   },
   {
     question: "What does a typical engagement look like?",
-    answer: "A typical engagement starts with an initial assessment, followed by collaborative strategy sessions, customized roadmap development, and ongoing support to ensure successful implementation and adoption.",
+    answer: "Discovery and gap assessment in the first two weeks. First AI agents or governance framework live within 60–90 days. We'll map your specific timeline on the call.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function FAQ() {
                 className="flex w-full items-center justify-between text-left group"
                 onClick={() => setOpenIndex((current) => (current === index ? null : index))}
               >
-                <span className="text-[18px] md:text-[20px] text-[#0a1314] pr-4 transition-colors group-hover:text-[#2f6ff6]">{faq.question}</span>
+                <span className="text-[18px] md:text-[20px] text-[#0a1314] pr-4 transition-colors ">{faq.question}</span>
                 <ChevronDown
                   className={`h-5 w-5 text-[#0a1314] transition-transform ${
                     openIndex === index ? "rotate-180" : "rotate-0"

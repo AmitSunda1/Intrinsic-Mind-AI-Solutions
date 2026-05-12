@@ -55,12 +55,12 @@ export default function AboutHero() {
 				<div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
 					<FadeIn className="space-y-6">
 						<div className="space-y-4">
-							<h1 className="text-[28px] font-semibold leading-[1.2] text-[#101828] md:text-[36px] ">
+							<h1 className="text-[32px] font-semibold leading-[1.2] text-[#101828] md:text-[36px] ">
 								From Enterprise Architect to AI Transformation Leader
 							</h1>
 						</div>
 
-						<div className="space-y-4 text-[16px] leading-[1.7] text-[#4b5563]">
+						<div className="space-y-4 text-[18px] leading-[1.7] text-[#4b5563]">
 							<p>
 								I&apos;ve spent the last 16 years in the trenches of enterprise technology - building systems, leading
 								teams, and solving the kinds of problems that keep CIOs up at night.
@@ -109,7 +109,7 @@ export default function AboutHero() {
 					</FadeIn>
 				</div>
 
-				<div className="space-y-8 max-w-[800px] text-center mt-8 lg:-mt-30">
+				{/* <div className="space-y-8 max-w-[800px] text-center mt-8 lg:-mt-30">
 					<FadeIn className="text-center">
 						<h2 className="text-center text-[28px] md:text-[36px] font-semibold text-[#101828]">Core Expertise</h2>
 					</FadeIn>
@@ -121,14 +121,14 @@ export default function AboutHero() {
 							</FadeIn>
 						))}
 					</div>
-				</div>
+				</div> */}
 
-				<div className="space-y-6">
+				{/* <div className="space-y-6">
 					<FadeIn>
 						<h2 className="text-[28px] md:text-[36px] font-semibold text-[#101828]">Journey &amp; Milestones</h2>
 					</FadeIn>
 					<div className="relative" style={{ paddingLeft: "60px" }}>
-						{/* Vertical connecting line — centered on the 40px badge */}
+						
 						<div
 							className="absolute top-5 bg-[#5A5FBF]/30"
 							style={{
@@ -140,7 +140,7 @@ export default function AboutHero() {
 						<div className="space-y-12">
 							{milestones.map((item, index) => (
 								<FadeIn key={item.year} delay={index * 0.1} className="relative flex gap-6">
-									{/* Blue circular badge — 40×40px, padding 13.46px, full border-radius */}
+									
 									<div
 										className="absolute flex items-center justify-center bg-[#5A5FBF] text-white font-medium shrink-0 shadow-sm"
 										style={{
@@ -157,7 +157,7 @@ export default function AboutHero() {
 										{item.year.slice(-2)}
 									</div>
 
-									{/* Milestone text */}
+									
 									<div className="py-1">
 										<div className="flex items-baseline gap-3">
 											{index === milestones.length - 1 ? (
@@ -178,7 +178,7 @@ export default function AboutHero() {
 							))}
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	);

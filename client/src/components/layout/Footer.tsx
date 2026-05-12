@@ -38,7 +38,7 @@ export default function Footer({ showHero = true }: FooterProps) {
 								</ul>
 							</div>
 						</div>
-						<div className="flex w-full max-w-sm flex-col gap-4 rounded-2xl bg-[#dfe5f0] p-4 lg:max-w-[328px]">
+						<div className="flex w-full max-w-sm flex-col gap-4 rounded-2xl bg-[#dfe5f0] p-0 lg:max-w-[328px]">
 							<CalEmbed height="520px" id="footer-cal-embed" isFooter={true} />
 						</div>
 					</div>
