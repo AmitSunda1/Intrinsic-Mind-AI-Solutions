@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import Logo from "../ui/Logo";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+	serviceLinks,
+} from "../sections/servicespage/serviceLinks";
 
 type HeaderProps = {
 	className?: string;
@@ -13,6 +16,8 @@ type HeaderProps = {
 
 export default function Header({ className = "", logoVariant = "dark" }: HeaderProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
+	const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
 	const headerBg = logoVariant === "dark" ? "bg-[#00162a]/70" : "bg-white/70";
 	const headerBorder = logoVariant === "dark" ? "border-white/10" : "border-black/5";
@@ -21,6 +26,8 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 	const mobileMenuBg = logoVariant === "dark" ? "bg-[#00162a]" : "bg-[#f8f9fa]";
 	const mobileMenuText = logoVariant === "dark" ? "text-white" : "text-[#101828]";
 	const mobileMenuBorder = logoVariant === "dark" ? "border-white/10" : "border-black/10";
+	const desktopDropdownBg =
+		logoVariant === "dark" ? "bg-[#f8f9fa]" : "bg-white";
 
 	return (
 		<header className={`fixed left-0 right-0 top-0 z-[999] ${className}`.trim()}>
@@ -34,9 +41,47 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 					<Link className="px-2 py-2 font-medium" href="/">
 						Home
 					</Link>
-					<Link className="px-2 py-2 font-medium" href="/servicesPage">
-						Services
-					</Link>
+					<div
+						className="relative"
+						onMouseEnter={() => setIsServicesMenuOpen(true)}
+						onMouseLeave={() => setIsServicesMenuOpen(false)}
+					>
+						<button
+							type="button"
+							className="flex items-center gap-1 px-2 py-2 font-medium"
+							onClick={() => setIsServicesMenuOpen((prev) => !prev)}
+							aria-expanded={isServicesMenuOpen}
+							aria-haspopup="menu"
+						>
+							Services
+							
+							<ChevronDown
+								className={`h-4 w-4 transition-transform ${isServicesMenuOpen ? "rotate-180" : ""}`}
+							/>
+						</button>
+						<AnimatePresence>
+							{isServicesMenuOpen && (
+								<motion.div
+									initial={{ opacity: 0, y: 8 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: 8 }}
+									transition={{ duration: 0.18 }}
+									className={`absolute left-0 top-full mt-4 w-[320px] rounded-2xl border border-black/5 ${desktopDropdownBg} p-2 shadow-[0px_24px_50px_rgba(15,23,42,0.16)]`}
+								>
+									{serviceLinks.map((service) => (
+										<Link
+											key={service.href}
+											href={service.href}
+											className="block rounded-xl px-4 py-3 text-[15px] font-medium text-[#101828] transition-colors hover:bg-[#eff3ff] hover:text-[#2f6ff6]"
+											onClick={() => setIsServicesMenuOpen(false)}
+										>
+											{service.label}
+										</Link>
+									))}
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</div>
 					<Link className="px-2 py-2 font-medium" href="/aboutus">
 						About
 					</Link>
@@ -56,7 +101,12 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 				</div>
 				<button
 					className={`flex items-center justify-center p-2 lg:hidden ${menuIconColor}`}
-					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+					onClick={() => {
+						setIsMobileMenuOpen(!isMobileMenuOpen);
+						if (isMobileMenuOpen) {
+							setIsMobileServicesOpen(false);
+						}
+					}}
 					aria-label="Toggle navigation menu"
 				>
 					<AnimatePresence mode="wait">
@@ -97,7 +147,46 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 					>
 						<nav className={`flex flex-col gap-6 text-[20px] ${mobileMenuText}`}>
 							<Link className="font-semibold" href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-							<Link className="font-semibold" href="/servicesPage" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+							<div className="flex flex-col gap-4">
+								<button
+									type="button"
+									className="flex items-center justify-between font-semibold"
+									onClick={() => setIsMobileServicesOpen((prev) => !prev)}
+									aria-expanded={isMobileServicesOpen}
+								>
+									<span>Services</span>
+									<ChevronDown
+										className={`h-5 w-5 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""}`}
+									/>
+								</button>
+								<AnimatePresence>
+									{isMobileServicesOpen && (
+										<motion.div
+											initial={{ opacity: 0, height: 0 }}
+											animate={{ opacity: 1, height: "auto" }}
+											exit={{ opacity: 0, height: 0 }}
+											transition={{ duration: 0.2 }}
+											className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+										>
+											<div className="flex flex-col p-2">
+												{serviceLinks.map((service) => (
+													<Link
+														key={service.href}
+														className="rounded-xl px-4 py-3 text-[16px] font-medium"
+														href={service.href}
+														onClick={() => {
+															setIsMobileServicesOpen(false);
+															setIsMobileMenuOpen(false);
+														}}
+													>
+														{service.label}
+													</Link>
+												))}
+											</div>
+										</motion.div>
+									)}
+								</AnimatePresence>
+							</div>
 							<Link className="font-semibold" href="/aboutus" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
 							<Link className="font-semibold" href="/contactus" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
 						</nav>

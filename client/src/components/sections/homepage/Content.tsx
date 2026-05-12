@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { ArrowUpRight, CircleCheck, CircleX } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
 import Link from "next/link";
+import { primaryServicePath } from "../servicespage/serviceLinks";
 
 const partnerLogos = [
   { src: "/assets/home/content/ServiceNow.webp", className: "w-[190px]" },
@@ -161,7 +162,7 @@ export default function Content() {
             </FadeIn>
           </div>
           <FadeIn delay={0.6} className="flex justify-center">
-            <Link href="/servicesPage" className="group flex h-[48px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
+            <Link href={primaryServicePath} className="group flex h-[48px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
               <div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
                 See where our AI goes
               </div>

@@ -1,7 +1,8 @@
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import Logo from "../ui/Logo";
 import Link from "next/link";
 import CalEmbed from "../ui/CalEmbed";
+import { primaryServicePath } from "../sections/servicespage/serviceLinks";
 
 
 
@@ -17,11 +18,11 @@ export default function Footer({ showHero = true }: FooterProps) {
 					<div className="flex w-full max-w-[1280px] flex-col gap-10 rounded-3xl bg-[linear-gradient(102deg,_#001c34_2%,_#00539a_121%)] px-6 py-10 lg:px-10 lg:py-12 text-white lg:flex-row lg:items-center lg:justify-between">
 						<div className="flex flex-1 flex-col gap-8">
 							<div className="space-y-2 text-[28px] lg:text-[32px] leading-[1.3] tracking-[-0.64px]">
-								<p className="font-light">Your AI strategy shouldn't be a guessing game.</p>
-								<p className="font-semibold">Let's build one that works.</p>
+								<p className="font-light">Your AI strategy shouldn&apos;t be a guessing game.</p>
+								<p className="font-semibold">Let&apos;s build one that works.</p>
 							</div>
 							<div className="space-y-4 text-[20px] text-white/90">
-								<p>In our first call, we'll cover:</p>
+									<p>In our first call, we&apos;ll cover:</p>
 								<ul className="space-y-3">
 									<li className="flex items-start gap-3">
 										<CheckCircle2 className="mt-1 h-[18px] w-[18px] text-[#6c6eea]" />
@@ -50,10 +51,10 @@ export default function Footer({ showHero = true }: FooterProps) {
 					<div className="flex flex-col sm:flex-row gap-8 sm:gap-12 text-[16px] text-black">
 						<div className="space-y-4">
 							<p className="font-semibold">Company</p>
-							<p className="cursor-pointer transition-colors hover:text-[#2f6ff6]">How it works</p>
-							<p className="cursor-pointer transition-colors hover:text-[#2f6ff6]">Services</p>
-							<p className="cursor-pointer transition-colors hover:text-[#2f6ff6]">About</p>
-							<p className="cursor-pointer transition-colors hover:text-[#2f6ff6]">Contact us</p>
+							<Link className="block transition-colors hover:text-[#2f6ff6]" href={primaryServicePath}>How it works</Link>
+							<Link className="block transition-colors hover:text-[#2f6ff6]" href={primaryServicePath}>Services</Link>
+							<Link className="block transition-colors hover:text-[#2f6ff6]" href="/aboutus">About</Link>
+							<Link className="block transition-colors hover:text-[#2f6ff6]" href="/contactus">Contact us</Link>
 						</div>
 						<div className="space-y-4">
 							<p className="font-semibold">Legal</p>

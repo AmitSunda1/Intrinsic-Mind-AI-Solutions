@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
 import Link from "next/link";
+import { primaryServicePath, serviceLinks } from "../servicespage/serviceLinks";
 
 const assets = {
   serviceImageOne: "/assets/home/services/image1.webp",
@@ -11,24 +12,28 @@ const assets = {
 
 const services = [
   {
+    href: serviceLinks[0].href,
     title: "AI Strategic Advisory & Governance",
     description:
       "Multiple AI tools, no structure around any of them. We build the governance layer - oversight, risk controls, and clear measurement of what each tool delivers.",
     images: [{ src: assets.serviceImageOne, className: "left-1/2 top-0 h-full w-full -translate-x-1/2" }],
   },
   {
+    href: serviceLinks[1].href,
     title: "Data Foundation Readiness",
     description:
       "AI is only as good as the data it runs on. We assess, restructure, and govern your data infrastructure - so when you deploy AI, it actually works.",
     images: [{ src: assets.serviceImageTwo, className: "left-1/2 top-0 h-full w-full -translate-x-1/2" }],
   },
   {
+    href: serviceLinks[2].href,
     title: "Chat & Automation Agents",
     description:
       "We deploy AI agents that handle the workflows slowing your teams down. Faster turnaround. Fewer errors. 42% more efficiency, documented.",
     images: [{ src: assets.serviceImageThree, className: "left-1/2 top-0 h-full w-full -translate-x-1/2" }],
   },
   {
+    href: primaryServicePath,
     title: "Prompt Cycle for ServiceNow (Coming Soon)",
     description:
       "Eliminate form bottlenecks and manual workflow management inside ServiceNow - through simple, structured prompts.",
@@ -64,7 +69,7 @@ export default function Services() {
                 <p className="mt-3 text-[16px] text-[#5d5e63]">{service.description}</p>
               </div>
               <div className="flex items-center justify-center pb-4">
-                <Link href="/servicesPage" className="group flex h-[40px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
+                <Link href={service.href} className="group flex h-[40px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
                   <div className="flex h-8 items-center justify-center rounded-full bg-[#626ee3] px-4 text-[14px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
                     See where our AI goes
                   </div>
