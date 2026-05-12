@@ -4,6 +4,19 @@ import Header from "../../layout/Header";
 import FadeIn from "../../ui/FadeIn";
 import Link from "next/link";
 
+// Helper function to split number from symbol
+const renderStatValue = (value: string) => {
+  const match = value.match(/^(\d+)(.*)$/);
+  if (!match) return value;
+  const [, number, symbol] = match;
+  return (
+    <>
+      <span className="text-white">{number}</span>
+      <span className="text-[#8CB0FF]">{symbol}</span>
+    </>
+  );
+};
+
 const stats = [
   {
     value: "41+",
@@ -43,14 +56,14 @@ export default function HeroServices() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-[32px] md:text-[50px] lg:text-[54px] font-bold leading-[1.2] tracking-[-1px] text-white">
+          <h1 className="text-[48px] md:text-[48px] lg:text-[48px] font-bold leading-[1.2] tracking-[-1px] text-white">
             <span className="block">You have AI tools.</span>
             <span className="block">What&apos;s missing is</span>
-            <span className="block italic text-[#7aa2ff]">the layer above them.</span>
+            <span className="block text-[#7aa2ff]">the layer above them.</span>
           </h1>
 
           {/* Body */}
-          <p className="max-w-[440px] text-[16px] leading-[1.6] text-white/65">
+          <p className="max-w-[440px] text-[18px] leading-[1.6] text-white/65">
             Who owns each tool. What it&apos;s supposed to deliver. How leadership knows if it&apos;s working.{" "}
             <span className="font-semibold text-white">That&apos;s what we come in to build.</span>
           </p>
@@ -80,17 +93,17 @@ export default function HeroServices() {
               <FadeIn
                 key={stat.value}
                 delay={0.2 + index * 0.1}
-                className="rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur-sm transition-transform hover:-translate-y-1"
+                className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm transition-transform hover:-translate-y-1"
               >
-                <p className="text-[28px] md:text-[32px] font-extrabold leading-none text-[#7aa2ff]">{stat.value}</p>
-                <p className="mt-2 text-[13px] leading-[1.4] text-white/55">{stat.label}</p>
+                <p className="text-[28px] md:text-[32px] font-extrabold leading-none">{renderStatValue(stat.value)}</p>
+                <p className="mt-2 text-[14px] leading-[1.4] text-white/55">{stat.label}</p>
               </FadeIn>
             ))}
           </div>
 
           {/* Bottom row — full-width card */}
-          <FadeIn delay={0.4} className="rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur-sm transition-transform hover:-translate-y-1">
-            <p className="text-[28px] md:text-[32px] font-extrabold leading-none text-[#7aa2ff]">{stats[2].value}</p>
+          <FadeIn delay={0.4} className="rounded-2xl border border-white/10 bg-white/[0.2] p-3 backdrop-blur-sm transition-transform hover:-translate-y-1">
+            <p className="text-[28px] md:text-[32px] font-extrabold leading-none">{renderStatValue(stats[2].value)}</p>
             <p className="mt-2 text-[13px] leading-[1.4] text-white/55">{stats[2].label}</p>
           </FadeIn>
         </div>

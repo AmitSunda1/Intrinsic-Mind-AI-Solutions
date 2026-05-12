@@ -54,22 +54,16 @@ export default function Steps() {
 
 				{/* 4-column step cards */}
 				<div className="relative w-full">
-					{/* Continuous dashed line spanning full width behind the cards */}
-					<div
-						aria-hidden
-						className="pointer-events-none absolute left-0 right-0 top-1/2 hidden -translate-y-1/2 border-t border-dashed border-[#FFFFFF] opacity-20 lg:block"
-						style={{ zIndex: 0 }}
-					/>
-
-					<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 relative" style={{ zIndex: 10 }}>
+					<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 relative" style={{ zIndex: 0 }}>
 						{steps.map((step, index) => (
 							<FadeIn
 								key={step.id}
 								delay={0.2 + index * 0.1}
-								className="flex flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
+								className="flex flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2 relative"
 								style={{
 									background:
 										"linear-gradient(139deg, #FEFFFF 5%, rgba(247,248,248,0.94) 24%, rgba(241,242,242,0.88) 66%, #CCD8FF 101%)",
+									zIndex: 2,
 								}}
 							>
 								{/* Step number */}

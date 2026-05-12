@@ -1,6 +1,9 @@
-import { CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import Logo from "../ui/Logo";
+import Link from "next/link";
 import CalEmbed from "../ui/CalEmbed";
+
+
 
 type FooterProps = {
 	showHero?: boolean;
@@ -35,8 +38,8 @@ export default function Footer({ showHero = true }: FooterProps) {
 								</ul>
 							</div>
 						</div>
-						<div className="flex w-full max-w-sm flex-col rounded-[22px] bg-[#dfe5f0] p-2 lg:max-w-[380px]">
-							<CalEmbed id="cal-embed-footer" height="420px" />
+						<div className="flex w-full max-w-sm flex-col gap-4 rounded-2xl bg-[#dfe5f0] p-4 lg:max-w-[328px]">
+							<CalEmbed height="520px" id="footer-cal-embed" isFooter={true} />
 						</div>
 					</div>
 				</div>

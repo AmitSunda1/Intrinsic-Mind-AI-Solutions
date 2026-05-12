@@ -6,9 +6,10 @@ import Cal, { getCalApi } from "@calcom/embed-react";
 type CalEmbedProps = {
   id?: string;
   height?: string;
+  isFooter?: boolean;
 };
 
-export default function CalEmbed({ id = "cal-embed", height = "580px" }: CalEmbedProps) {
+export default function CalEmbed({ id = "cal-embed", height = "580px", isFooter = false }: CalEmbedProps) {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "contact" });
@@ -39,15 +40,21 @@ export default function CalEmbed({ id = "cal-embed", height = "580px" }: CalEmbe
 
   return (
     <div
-      className="w-full rounded-[18px] overflow-hidden bg-white"
-      style={{ height, overflowY: "auto" }}
+      className="w-full rounded-[18px] bg-white"
+      style={{
+        height,
+        overflowY: "auto",
+        overflowX: "hidden",
+        position: "relative",
+        zIndex: isFooter ? 10 : "auto",
+      }}
       id={id}
     >
       {calLink && (
         <Cal
           namespace="contact"
           calLink={calLink}
-          style={{ width: "100%", height: "100%", overflow: "scroll" }}
+          style={{ width: "100%", height: "100%", overflow: "visible" }}
           config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" }}
         />
       )}

@@ -33,13 +33,13 @@ export default function ContactHero() {
 				</div>
 
 				<FadeIn className="mt-6 max-w-[780px] text-center">
-					<h1 className="text-[32px] md:text-[40px] lg:text-[44px] font-bold leading-[1.2] text-[#1e293b]">
+					<h1 className="text-[48px] md:text-[48px] lg:text-[44px] font-bold leading-[1.2] text-[#1e293b]">
 						Book Your Free AI Strategy Session
 					</h1>
 				</FadeIn>
 
 				{/* Subtitle */}
-				<p className="mt-5 max-w-[640px] text-center text-[14px] leading-[1.6] text-[#64748b]">
+				<p className="mt-5 max-w-[640px] text-center text-[16px] leading-[1.6] text-[#64748b]">
 					See exactly where your AI stands. Leave with a plan to move forward. Most enterprises already have AI
 					tools in place. The gap is governance, data readiness, and strategy. This call is where we close that
 					gap together.

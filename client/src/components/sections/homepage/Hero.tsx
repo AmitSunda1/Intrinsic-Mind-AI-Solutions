@@ -21,13 +21,13 @@ export default function Hero() {
 						<Circle className="h-2.5 w-2.5 text-[#6c6eea]" fill="currentColor" />
 						<span>30+ Enterprise Clients</span>
 					</div>
-					<h1 className="max-w-[974px] text-[28px] sm:text-[32px] font-semibold leading-[1.3] tracking-[-0.96px] text-[#efefef] md:text-[44px] lg:text-[48px]">
+					<h1 className="max-w-[974px] text-[28px] sm:text-[32px] font-semibold leading-[1.3] tracking-[-0.96px] text-[#efefef] md:text-[48px] lg:text-[48px]">
 						<span className="block">How enterprise CIOs eliminate AI chaos and</span>
 						<span className="block">gain 42% more operational efficiency</span>
 						<span className="block">without replacing a single tool.</span>
 					</h1>
 					<div className="relative flex w-full justify-center">
-						<p className="relative max-w-[620px] text-[16px] md:text-[18px] text-[#b7b7b7] tracking-[0.54px]">
+						<p className="relative max-w-[620px] text-[10px] md:text-[18px] text-[#b7b7b7] tracking-[0.54px]">
 							Most enterprises have the tools. What's missing is governance,
 							data readiness, and strategy.That's what we build. 41 times over.
 						</p>
