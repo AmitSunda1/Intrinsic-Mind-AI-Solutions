@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import FadeIn from "../../ui/FadeIn";
@@ -84,6 +88,26 @@ export default function ServicePageTemplate({
 }: {
   content: ServicePageContent;
 }) {
+  const stepsSectionRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: stepsSectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const stepOneX = useTransform(scrollYProgress, [0, 1], ["120px", "0px"]);
+  const stepOneRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
+
+  const stepTwoX = useTransform(scrollYProgress, [0, 1], ["40px", "0px"]);
+  const stepTwoRotate = useTransform(scrollYProgress, [0, 1], [-3, 0]);
+  const stepTwoScale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+
+  const stepThreeX = useTransform(scrollYProgress, [0, 1], ["-40px", "0px"]);
+  const stepThreeRotate = useTransform(scrollYProgress, [0, 1], [3, 0]);
+  const stepThreeScale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+
+  const stepFourX = useTransform(scrollYProgress, [0, 1], ["-120px", "0px"]);
+  const stepFourRotate = useTransform(scrollYProgress, [0, 1], [8, 0]);
+
   return (
     <div className="flex w-full flex-col bg-[#00162a]">
       <section
@@ -311,26 +335,87 @@ export default function ServicePageTemplate({
             </p>
           </FadeIn>
 
-          <div className="relative w-full">
-            <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4" style={{ zIndex: 0 }}>
-              {content.steps.map((step, index) => (
-                <FadeIn
-                  key={step.id}
-                  delay={0.2 + index * 0.1}
-                  className="relative flex flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
+          <div ref={stepsSectionRef} className="relative w-full">
+            <div className="relative grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4" style={{ zIndex: 0 }}>
+              <motion.div
+                className="relative h-full"
+                style={{ x: stepOneX, rotate: stepOneRotate }}
+              >
+                <div
+                  className="relative flex h-full flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
                   style={{
                     background:
                       "linear-gradient(139deg, #FEFFFF 5%, rgba(247,248,248,0.94) 24%, rgba(241,242,242,0.88) 66%, #CCD8FF 101%)",
                     zIndex: 2,
                   }}
                 >
-                  <p className="text-[28px] font-bold text-[#0a1314]">{step.id}</p>
-                  <h3 className="text-[18px] font-semibold text-[#2f6ff6]">{step.title}</h3>
+                  <p className="text-[28px] font-bold text-[#0a1314]">{content.steps[0].id}</p>
+                  <h3 className="text-[18px] font-semibold text-[#2f6ff6]">{content.steps[0].title}</h3>
                   <p className="text-[13px] leading-[1.65] text-[#4b5563]">
-                    {step.description}
+                    {content.steps[0].description}
                   </p>
-                </FadeIn>
-              ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative h-full"
+                style={{ x: stepTwoX, rotate: stepTwoRotate, scale: stepTwoScale }}
+              >
+                <div
+                  className="relative flex h-full flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
+                  style={{
+                    background:
+                      "linear-gradient(139deg, #FEFFFF 5%, rgba(247,248,248,0.94) 24%, rgba(241,242,242,0.88) 66%, #CCD8FF 101%)",
+                    zIndex: 2,
+                  }}
+                >
+                  <p className="text-[28px] font-bold text-[#0a1314]">{content.steps[1].id}</p>
+                  <h3 className="text-[18px] font-semibold text-[#2f6ff6]">{content.steps[1].title}</h3>
+                  <p className="text-[13px] leading-[1.65] text-[#4b5563]">
+                    {content.steps[1].description}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative h-full"
+                style={{ x: stepThreeX, rotate: stepThreeRotate, scale: stepThreeScale }}
+              >
+                <div
+                  className="relative flex h-full flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
+                  style={{
+                    background:
+                      "linear-gradient(139deg, #FEFFFF 5%, rgba(247,248,248,0.94) 24%, rgba(241,242,242,0.88) 66%, #CCD8FF 101%)",
+                    zIndex: 2,
+                  }}
+                >
+                  <p className="text-[28px] font-bold text-[#0a1314]">{content.steps[2].id}</p>
+                  <h3 className="text-[18px] font-semibold text-[#2f6ff6]">{content.steps[2].title}</h3>
+                  <p className="text-[13px] leading-[1.65] text-[#4b5563]">
+                    {content.steps[2].description}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative h-full"
+                style={{ x: stepFourX, rotate: stepFourRotate }}
+              >
+                <div
+                  className="relative flex h-full flex-col gap-3 rounded-2xl p-6 shadow-[0px_20px_48px_rgba(0,0,0,0.35)] transition-transform hover:-translate-y-2"
+                  style={{
+                    background:
+                      "linear-gradient(139deg, #FEFFFF 5%, rgba(247,248,248,0.94) 24%, rgba(241,242,242,0.88) 66%, #CCD8FF 101%)",
+                    zIndex: 2,
+                  }}
+                >
+                  <p className="text-[28px] font-bold text-[#0a1314]">{content.steps[3].id}</p>
+                  <h3 className="text-[18px] font-semibold text-[#2f6ff6]">{content.steps[3].title}</h3>
+                  <p className="text-[13px] leading-[1.65] text-[#4b5563]">
+                    {content.steps[3].description}
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
