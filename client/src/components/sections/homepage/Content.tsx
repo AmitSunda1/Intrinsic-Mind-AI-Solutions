@@ -43,7 +43,7 @@ const stats = [
     label: "Average efficiency gain after go-live.",
   },
   {
-    value: "41+",
+    value: "40+",
     label: "Enterprise AI implementations delivered",
   },
   {
@@ -73,8 +73,8 @@ export default function Content() {
         <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 text-center grid-cols-1 sm:grid-cols-3 -mt-20 md:-mt-30">
           {stats.map((item, index) => (
             <FadeIn key={item.value} delay={index * 0.1} className="space-y-3">
-              <p className="text-[36px] font-bold text-[#323c9a]">{item.value}</p>
-              <p className="text-sm text-black md:text-base">{item.label}</p>
+              <p className="text-[40px] font-bold text-[#323c9a]">{item.value}</p>
+              <p className="text-[16px] text-black md:text-base">{item.label}</p>
             </FadeIn>
           ))}
         </div>
