@@ -8,13 +8,15 @@ import { primaryServicePath } from "../servicespage/serviceLinks";
 
 const partnerLogos = [
   { src: "/assets/home/content/ServiceNow.webp", className: "w-[190px]" },
-  { src: "/assets/home/content/Claude.webp", className: "w-[155px]" },
-  { src: "/assets/home/content/Salesforce.webp", className: "w-[110px]" },
-  { src: "/assets/home/content/AWS.webp", className: "w-[105px]" },
-  { src: "/assets/home/content/Google%20Cloud.webp", className: "w-[190px]" },
-  { src: "/assets/home/content/LangGraph.webp", className: "w-[165px]" },
-  { src: "/assets/home/content/Python.webp", className: "w-[130px]" },
-  { src: "/assets/home/content/OneTrust.webp", className: "w-[185px]" },
+  { src: "/assets/home/content/AtomicWork.webp", className: "w-[190px]" },
+  { src: "/assets/home/content/Flexera.webp", className: "w-[110px]" },
+  { src: "/assets/home/content/Jira.webp", className: "w-[105px]" },
+  { src: "/assets/home/content/ProcessUnity.webp", className: "w-[190px]" },
+  { src: "/assets/home/content/OneTrust.webp", className: "w-[165px]" },
+  { src: "/assets/home/content/Genesys.webp", className: "w-[185px]" },
+  { src: "/assets/home/content/Claude.webp", className: "w-[185px]" },
+  { src: "/assets/home/content/OpenAI.webp", className: "w-[185px]" },
+  { src: "/assets/home/content/n8n.webp", className: "w-[185px]" },
 ];
 
 const logoSlides = [...partnerLogos, ...partnerLogos];
