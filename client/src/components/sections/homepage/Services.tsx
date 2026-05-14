@@ -1,6 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
-import Link from "next/link";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 import { primaryServicePath, serviceLinks } from "../servicespage/serviceLinks";
 
 const assets = {
@@ -69,14 +68,12 @@ export default function Services() {
                 <p className="mt-3 text-[16px] text-[#5d5e63]">{service.description}</p>
               </div>
               <div className="flex items-center justify-center pb-4">
-                <Link href={service.href} className="group flex h-[40px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
-                  <div className="flex h-8 items-center justify-center rounded-full bg-[#626ee3] px-4 text-[14px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
-                    See where our AI goes
-                  </div>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#626ee3] transition-colors group-hover:bg-[#505bcf]">
-                    <ArrowUpRight className="h-4 w-4 text-white" />
-                  </div>
-                </Link>
+                <SplitCtaButton
+                  href={service.href}
+                  label="See where our AI goes"
+                  size="sm"
+                  className="bg-[#dde0ff]"
+                />
               </div>
             </FadeIn>
           ))}

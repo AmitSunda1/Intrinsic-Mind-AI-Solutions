@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import FadeIn from "../../ui/FadeIn";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 
 type HeroStat = {
   value: string;
@@ -139,17 +139,13 @@ export default function ServicePageTemplate({
             </p>
 
             <div className="flex flex-wrap items-center gap-5 pt-2">
-              <Link
+              <SplitCtaButton
                 href="/contactus"
-                className="group flex h-10 items-center justify-center rounded-full bg-white/20 p-1 backdrop-blur-[0.5px] transition-transform hover:scale-105"
-              >
-                <span className="flex h-8 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
-                  Book Consultation
-                </span>
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#626ee3] transition-colors group-hover:bg-[#505bcf]">
-                  <ArrowUpRight className="h-4 w-4 text-white" />
-                </span>
-              </Link>
+                label="Book Consultation"
+                size="sm"
+                labelClassName="px-5 text-[16px]"
+                className="bg-white/20 backdrop-blur-[0.5px]"
+              />
               <button className="flex items-center gap-2 text-[16px] text-white/60 transition-colors hover:text-white/90">
                 See how we work
                 <ArrowDown className="h-4 w-4" />

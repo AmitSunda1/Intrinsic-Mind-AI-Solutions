@@ -1,7 +1,7 @@
-import { ArrowUpRight, Circle } from "lucide-react";
+import { Circle } from "lucide-react";
 import Header from "../../layout/Header";
 import FadeIn from "../../ui/FadeIn";
-import Link from "next/link";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 
 const heroAssets = {
 	videoThumb: "/assets/home/hero/video-thumb.webp",
@@ -33,14 +33,11 @@ export default function Hero() {
 					</div>
 				</FadeIn>
 				<FadeIn delay={0.3} className="flex flex-col items-center gap-2">
-					<Link href="/contactus" className="group flex h-[48px] items-center justify-center rounded-full bg-white/20 p-1 backdrop-blur-[0.5px] transition-transform hover:scale-105">
-						<div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
-							Book a Free Consultation
-						</div>
-						<div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#626ee3] transition-colors group-hover:bg-[#505bcf]">
-							<ArrowUpRight className="h-5 w-5 text-white" />
-						</div>
-					</Link>
+					<SplitCtaButton
+						href="/contactus"
+						label="Book a Free Consultation"
+						className="bg-white/20 backdrop-blur-[0.5px]"
+					/>
 					<p className="text-[16px] text-[#b7b7b7]">See where your AI gaps are.</p>
 				</FadeIn>
 				<div aria-hidden className="pointer-events-none absolute left-1/2 top-[230px] -z-0 w-full max-w-[1350px] -translate-x-1/2">

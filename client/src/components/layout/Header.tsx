@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "../ui/Logo";
+import SplitCtaButton from "../ui/SplitCtaButton";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -90,14 +91,15 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 					</Link>
 				</nav>
 				<div className="hidden items-center justify-end lg:flex">
-					<Link href="/contactus" className="flex h-10 items-center justify-center rounded-full bg-white/20 p-1 backdrop-blur-[0.5px]">
-						<span className="flex h-8 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white">
-							Book a Free Consultation
-						</span>
-						<span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#626ee3]">
-							<ArrowUpRight className="h-4 w-4 text-white" />
-						</span>
-					</Link>
+					<SplitCtaButton
+						href="/contactus"
+						label="Book a Free Consultation"
+						size="sm"
+						labelClassName="px-5 text-[16px]"
+						className="bg-white/20 backdrop-blur-[0.5px]"
+						hoverScale={false}
+						withHoverFill={false}
+					/>
 				</div>
 				<button
 					className={`flex items-center justify-center p-2 lg:hidden ${menuIconColor}`}

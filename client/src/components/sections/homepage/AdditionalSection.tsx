@@ -1,6 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
-import Link from "next/link";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 
 const assets = {
   outcomeImageOne: "/assets/home/additionalsection/image1.webp",
@@ -88,14 +87,11 @@ export default function AdditionalSection() {
           ))}
         </div>
         <FadeIn delay={0.4} className="flex justify-center">
-          <Link href="/contactus" className="group flex h-[48px] items-center justify-center rounded-full bg-white/20 p-1 backdrop-blur-[0.5px] transition-transform hover:scale-105">
-            <div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
-              Book a Free Consultation
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#626ee3] transition-colors group-hover:bg-[#505bcf]">
-              <ArrowUpRight className="h-5 w-5 text-white" />
-            </div>
-          </Link>
+          <SplitCtaButton
+            href="/contactus"
+            label="Book a Free Consultation"
+            className="bg-white/20 backdrop-blur-[0.5px]"
+          />
         </FadeIn>
       </div>
     </section>

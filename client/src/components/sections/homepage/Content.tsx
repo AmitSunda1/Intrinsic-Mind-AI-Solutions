@@ -1,9 +1,9 @@
 "use client";
 
 import Slider from "react-slick";
-import { ArrowUpRight, CircleCheck, CircleX } from "lucide-react";
+import { CircleCheck, CircleX } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
-import Link from "next/link";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 import { primaryServicePath } from "../servicespage/serviceLinks";
 
 const partnerLogos = [
@@ -85,7 +85,7 @@ export default function Content() {
             Deployed inside the tools your teams already run.
           </p>
           <div className="w-full overflow-hidden">
-            <div className="w-full px-2 sm:px-6">
+            <div className="w-full">
               <Slider {...logoSliderSettings} className="w-full">
                 {logoSlides.map((logo, index) => (
                   <div key={`${logo.src}-${index}`} className="px-10">
@@ -164,14 +164,7 @@ export default function Content() {
             </FadeIn>
           </div>
           <FadeIn delay={0.6} className="flex justify-center">
-            <Link href={primaryServicePath} className="group flex h-[48px] items-center justify-center rounded-full bg-[#dde0ff] p-1 transition-transform hover:scale-105">
-              <div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white transition-colors group-hover:bg-[#505bcf]">
-                See where our AI goes
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#626ee3] transition-colors group-hover:bg-[#505bcf]">
-                <ArrowUpRight className="h-5 w-5 text-white" />
-              </div>
-            </Link>
+            <SplitCtaButton href={primaryServicePath} label="See where our AI goes" className="bg-[#dde0ff]" />
           </FadeIn>
         </div>
       </section>

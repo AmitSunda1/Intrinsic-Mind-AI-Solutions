@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "../../ui/FadeIn";
+import SplitCtaButton from "../../ui/SplitCtaButton";
 
 const faqs = [
   {
@@ -36,14 +37,14 @@ export default function FAQ() {
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-12 lg:flex-row">
         <FadeIn delay={0.1} className="flex max-w-[340px] flex-col gap-8">
           <h2 className="text-[32px] md:text-[40px] font-semibold text-[#0a1314]">Do you have a question?</h2>
-          <div className="flex h-[48px] items-center rounded-full bg-transparent p-1 shadow-none transition-transform hover:scale-105">
-            <div className="flex h-10 items-center justify-center rounded-full bg-[#626ee3] px-5 text-[16px] font-medium text-white shadow-none">
-              Ask Us Directly
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#626ee3] shadow-none">
-              <ArrowUpRight className="h-5 w-5 text-white" />
-            </div>
-          </div>
+          <SplitCtaButton
+            href="/contactus"
+            label="Ask Us Directly"
+            className="bg-transparent shadow-none"
+            labelClassName="shadow-none"
+            iconWrapperClassName="shadow-none"
+            withHoverFill={false}
+          />
         </FadeIn>
         <FadeIn delay={0.2} className="flex flex-1 flex-col gap-6">
           {faqs.map((faq, index) => (

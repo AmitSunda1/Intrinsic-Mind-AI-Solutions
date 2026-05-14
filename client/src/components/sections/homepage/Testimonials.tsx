@@ -82,7 +82,7 @@ export default function Testimonials() {
   const playBottomRow = () => bottomRowRef.current?.slickPlay();
 
   return (
-    <section className="bg-[#f7f8fb] px-4 py-16 md:py-24 text-[#0a1314] sm:px-6 lg:px-12">
+    <section className="bg-[#f7f8fb] py-16 md:py-24 text-[#0a1314]">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-10">
         <FadeIn className="text-center">
           <p className="text-[16px] md:text-[20px] text-[#5d5e63]">Testimonials</p>
