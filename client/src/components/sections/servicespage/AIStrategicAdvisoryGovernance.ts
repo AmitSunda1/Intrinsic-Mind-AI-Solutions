@@ -12,7 +12,7 @@ export const aiStrategicAdvisoryGovernanceContent: ServicePageContent = {
   heroEmphasis: "That's what we come in to build.",
   heroStats: [
     {
-      value: "41+",
+      value: "40+",
       label: "Enterprise implementations delivered",
     },
     {
@@ -127,7 +127,7 @@ export const aiStrategicAdvisoryGovernanceContent: ServicePageContent = {
         "IT, operations, and business leadership on the same page — knowing what gets built, when it ships, and who owns it.",
     },
   ],
-  footerStatValue: "41+",
+  footerStatValue: "40+",
   footerStatLabel: "Implementations",
   footerDescription:
     "Every recommendation we make comes from having done this inside real enterprise environments — not from a framework we sell off a shelf. When we walk into your organization, we've already solved most of what you're facing.",
