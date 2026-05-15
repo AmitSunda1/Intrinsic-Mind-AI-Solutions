@@ -1,4 +1,3 @@
-import { Circle } from "lucide-react";
 import Header from "../../layout/Header";
 import FadeIn from "../../ui/FadeIn";
 import SplitCtaButton from "../../ui/SplitCtaButton";
@@ -14,11 +13,11 @@ export default function Hero() {
 			<Header />
 			<div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center gap-[40px] lg:gap-[64px] px-6 lg:px-16">
 				<FadeIn delay={0.1} className="flex flex-col items-center gap-8 text-center">
-					<div className="flex flex-wrap justify-center items-center gap-2 px-5 py-3 sm:gap-3 sm:px-8 rounded-full bg-[rgba(1,2,7,0.1)] text-sm text-[#efefef] ">
+					<div className="flex w-fit flex-wrap justify-center items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-[12px] sm:text-[13px] uppercase tracking-[0.18em] text-white/70">
 						<span>42% Average Efficiency Gain</span>
-						<Circle className="h-2.5 w-2.5 text-[#6c6eea]" fill="currentColor" />
+						<span className="h-2 w-2 shrink-0 rounded-full bg-[#626ee3]" />
 						<span>15+ Years</span>
-						<Circle className="h-2.5 w-2.5 text-[#6c6eea]" fill="currentColor" />
+						<span className="h-2 w-2 shrink-0 rounded-full bg-[#626ee3]" />
 						<span>30+ Enterprise Clients</span>
 					</div>
 					<h1 className="max-w-[974px] text-[28px] sm:text-[32px] font-semibold leading-[1.3] tracking-[-0.96px] text-[#efefef] md:text-[48px] lg:text-[48px]">

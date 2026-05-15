@@ -1,8 +1,7 @@
 "use client";
 
-import Slider from "react-slick";
-import { useRef } from "react";
 import FadeIn from "../../ui/FadeIn";
+import MarqueeSwiper from "../../ui/MarqueeSwiper";
 
 const testimonials = [
   {
@@ -48,38 +47,13 @@ const testimonials = [
   },
 ];
 
-const firstRow = [...testimonials.slice(0, 4), ...testimonials.slice(0, 4)];
-const secondRow = [...testimonials.slice(4), ...testimonials.slice(4)];
-
-const sliderSettings = {
-  arrows: false,
-  dots: false,
-  infinite: true,
-  speed: 12000,
-  autoplay: true,
-  autoplaySpeed: 1,
-  cssEase: "linear",
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  pauseOnHover: true,
-  pauseOnFocus: true,
-  swipeToSlide: true,
-  draggable: true,
-  variableWidth: true,
-  responsive: [
-    { breakpoint: 1280, settings: { variableWidth: true } },
-    { breakpoint: 1024, settings: { variableWidth: true } },
-    { breakpoint: 640, settings: { variableWidth: true } },
-  ],
-};
-
 export default function Testimonials() {
-  const topRowRef = useRef<Slider | null>(null);
-  const bottomRowRef = useRef<Slider | null>(null);
-  const pauseTopRow = () => topRowRef.current?.slickPause();
-  const playTopRow = () => topRowRef.current?.slickPlay();
-  const pauseBottomRow = () => bottomRowRef.current?.slickPause();
-  const playBottomRow = () => bottomRowRef.current?.slickPlay();
+  const topItems = testimonials.slice(0, 4);
+  const bottomItems = testimonials.slice(4);
+  
+  // Duplicate items to ensure there are enough slides for continuous Swiper looping
+  const topRow = [...topItems, ...topItems, ...topItems, ...topItems];
+  const bottomRow = [...bottomItems, ...bottomItems, ...bottomItems, ...bottomItems];
 
   return (
     <section className="bg-[#f7f8fb] py-16 md:py-24 text-[#0a1314]">
@@ -92,56 +66,41 @@ export default function Testimonials() {
         </FadeIn>
       </div>
       <div className="mt-12 w-full space-y-8">
-        <div className="group w-full" onMouseEnter={pauseTopRow} onMouseLeave={playTopRow}>
-          <Slider ref={topRowRef} {...sliderSettings} className="w-full [&_.slick-track]:transition-none group-hover:[&_.slick-track]:[animation-play-state:paused]">
-            {firstRow.map((item, index) => (
-              <div
-                key={`${item.name}-${item.role}-${index}`}
-                className="px-3"
-                onMouseEnter={pauseTopRow}
-                onMouseLeave={playTopRow}
-              >
-              <div className="h-[260px] w-[300px] max-w-[300px] rounded-[12px] border border-[rgba(0,54,214,0.12)] bg-white p-6 shadow-[0px_10px_30px_rgba(15,23,42,0.06)]">
-                <div className="flex h-full flex-col gap-6">
-                  <p className="text-[18px] font-medium text-black">"{item.quote}"</p>
-                  <div className="h-px w-full bg-[#d8dce3]" />
-                  <div className="mt-auto">
-                    <p className="text-[16px] font-medium text-black">{item.name}</p>
-                    <p className="text-[14px] text-[#5d5e63]">{item.role}</p>
-                  </div>
+        <MarqueeSwiper
+          items={topRow}
+          speed={12000}
+          slideClassName="px-3"
+          renderItem={(item) => (
+            <div className="h-[260px] w-[300px] max-w-[300px] rounded-[12px] border border-[rgba(0,54,214,0.12)] bg-white p-6 shadow-[0px_10px_30px_rgba(15,23,42,0.06)]">
+              <div className="flex h-full flex-col gap-6">
+                <p className="text-[18px] font-medium text-black">"{item.quote}"</p>
+                <div className="h-px w-full bg-[#d8dce3]" />
+                <div className="mt-auto">
+                  <p className="text-[16px] font-medium text-black">{item.name}</p>
+                  <p className="text-[14px] text-[#5d5e63]">{item.role}</p>
                 </div>
               </div>
             </div>
-            ))}
-          </Slider>
-        </div>
-        <div
-          className="group w-full"
-          onMouseEnter={pauseBottomRow}
-          onMouseLeave={playBottomRow}
-        >
-          <Slider ref={bottomRowRef} {...sliderSettings} rtl className="w-full [&_.slick-track]:transition-none group-hover:[&_.slick-track]:[animation-play-state:paused]">
-            {secondRow.map((item, index) => (
-              <div
-                key={`${item.name}-${item.role}-${index}`}
-                className="px-3"
-                onMouseEnter={pauseBottomRow}
-                onMouseLeave={playBottomRow}
-              >
-              <div className="h-[260px] w-[300px] max-w-[300px] rounded-[12px] border border-[rgba(0,54,214,0.12)] bg-white p-6 shadow-[0px_10px_30px_rgba(15,23,42,0.06)]">
-                <div className="flex h-full flex-col gap-6">
-                  <p className="text-[18px] font-medium text-black">"{item.quote}"</p>
-                  <div className="h-px w-full bg-[#d8dce3]" />
-                  <div className="mt-auto">
-                    <p className="text-[16px] font-medium text-black">{item.name}</p>
-                    <p className="text-[14px] text-[#5d5e63]">{item.role}</p>
-                  </div>
+          )}
+        />
+        <MarqueeSwiper
+          items={bottomRow}
+          speed={12000}
+          reverseDirection
+          slideClassName="px-3"
+          renderItem={(item) => (
+            <div className="h-[260px] w-[300px] max-w-[300px] rounded-[12px] border border-[rgba(0,54,214,0.12)] bg-white p-6 shadow-[0px_10px_30px_rgba(15,23,42,0.06)]">
+              <div className="flex h-full flex-col gap-6">
+                <p className="text-[18px] font-medium text-black">"{item.quote}"</p>
+                <div className="h-px w-full bg-[#d8dce3]" />
+                <div className="mt-auto">
+                  <p className="text-[16px] font-medium text-black">{item.name}</p>
+                  <p className="text-[14px] text-[#5d5e63]">{item.role}</p>
                 </div>
               </div>
             </div>
-            ))}
-          </Slider>
-        </div>
+          )}
+        />
       </div>
     </section>
   );

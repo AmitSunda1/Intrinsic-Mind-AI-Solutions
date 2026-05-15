@@ -1,8 +1,8 @@
 "use client";
 
-import Slider from "react-slick";
 import { CircleCheck, CircleX } from "lucide-react";
 import FadeIn from "../../ui/FadeIn";
+import MarqueeSwiper from "../../ui/MarqueeSwiper";
 import SplitCtaButton from "../../ui/SplitCtaButton";
 import { primaryServicePath } from "../servicespage/serviceLinks";
 
@@ -18,26 +18,6 @@ const partnerLogos = [
   { src: "/assets/home/content/OpenAI.webp", className: "w-[185px]" },
   { src: "/assets/home/content/n8n.webp", className: "w-[185px]" },
 ];
-
-const logoSlides = [...partnerLogos, ...partnerLogos];
-
-const logoSliderSettings = {
-  arrows: false,
-  dots: false,
-  infinite: true,
-  speed: 15000,
-  autoplay: true,
-  autoplaySpeed: 0,
-  cssEase: "linear",
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  variableWidth: true,
-  pauseOnHover: false,
-  pauseOnFocus: false,
-  swipeToSlide: false,
-  draggable: false,
-  touchMove: false,
-};
 
 const stats = [
   {
@@ -85,21 +65,22 @@ export default function Content() {
             Deployed inside the tools your teams already run.
           </p>
           <div className="w-full overflow-hidden">
-            <div className="w-full">
-              <Slider {...logoSliderSettings} className="w-full">
-                {logoSlides.map((logo, index) => (
-                  <div key={`${logo.src}-${index}`} className="px-10">
-                    <div className="flex h-12 items-center justify-center">
-                      <img
-                        alt={`Partner logo ${index + 1}`}
-                        className={`h-auto max-h-10 object-contain ${logo.className}`}
-                        src={logo.src}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-            </div>
+            <MarqueeSwiper
+              items={partnerLogos}
+              pauseOnHover={false}
+              allowTouchMove={false}
+              speed={15000}
+              slideClassName="px-10"
+              renderItem={(logo, index) => (
+                <div className="flex h-12 items-center justify-center">
+                  <img
+                    alt={`Partner logo ${index + 1}`}
+                    className={`h-auto max-h-10 object-contain ${logo.className}`}
+                    src={logo.src}
+                  />
+                </div>
+              )}
+            />
           </div>
         </FadeIn>
       </section>
@@ -119,22 +100,23 @@ export default function Content() {
             </p>
           </FadeIn>
           <div className="grid w-full items-stretch gap-8 md:gap-12 lg:grid-cols-[1fr_auto_1fr]">
-            <FadeIn delay={0.2} className="flex flex-col gap-4">
-              <div className="flex h-[100px] md:h-[120px] items-center rounded-[22px] border border-[#ff6868] bg-[linear-gradient(168deg,_#ffffff_9%,_#ffcdcd_116%)] p-6 shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg">
-                <p className="text-[28px] md:text-[32px] font-medium leading-none text-[#da0000]">OLD WAY</p>
-              </div>
-              {oldWay.map((item) => (
-                <div
-                  key={item}
-                  className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#ff6868] bg-[linear-gradient(171deg,_#ffffff_9%,_#ffcdcd_116%)] px-5 text-[#5b5b5b] shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <span className="flex h-6 w-6 items-center justify-center text-[#da0000]">
-                    <CircleX className="h-[22px] w-[22px]" />
-                  </span>
-                  <p className="text-[16px] leading-[1.4]">{item}</p>
+            <div className="flex flex-col gap-4">
+              <FadeIn delay={0.2}>
+                <div className="flex h-[100px] md:h-[120px] items-center rounded-[22px] border border-[#ff6868] bg-[linear-gradient(168deg,_#ffffff_9%,_#ffcdcd_116%)] p-6 shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                  <p className="text-[28px] md:text-[32px] font-medium leading-none text-[#da0000]">OLD WAY</p>
                 </div>
+              </FadeIn>
+              {oldWay.map((item, index) => (
+                <FadeIn key={item} delay={0.28 + index * 0.08}>
+                  <div className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#ff6868] bg-[linear-gradient(171deg,_#ffffff_9%,_#ffcdcd_116%)] px-5 text-[#5b5b5b] shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                    <span className="flex h-6 w-6 items-center justify-center text-[#da0000]">
+                      <CircleX className="h-[22px] w-[22px]" />
+                    </span>
+                    <p className="text-[16px] leading-[1.4]">{item}</p>
+                  </div>
+                </FadeIn>
               ))}
-            </FadeIn>
+            </div>
             <div className="hidden flex-col items-center py-2 lg:flex">
               <div className="w-px flex-1 bg-white/20" />
               <div className="flex size-[64px] items-center justify-center rounded-full border border-[rgba(0,22,88,0.2)] bg-[#f1f1f1]">
@@ -142,26 +124,26 @@ export default function Content() {
               </div>
               <div className="w-px flex-1 bg-white/20" />
             </div>
-            <FadeIn delay={0.4} className="relative flex flex-col gap-4">
-              {/* <Sparkles className="absolute right-7 top-7 h-9 w-9 text-[#0036d6]" /> */}
-              <div className="flex h-[100px] md:h-[120px] items-center rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] p-6 shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg">
-                <p className="text-[28px] md:text-[32px] font-medium leading-[1.3] text-[#0036d6]">
-                  <span className="text-[#5882ff]">NEW WAY</span>
-                  <span className="block text-[20px] md:text-[32px] font-bold text-[#0036d6]">WITH INTRENSIC MIND</span>
-                </p>
-              </div>
-              {newWay.map((item) => (
-                <div
-                  key={item}
-                  className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] px-5 text-black shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <span className="flex h-6 w-6 items-center justify-center text-[#0036d6]">
-                    <CircleCheck className="h-[22px] w-[22px]" />
-                  </span>
-                  <p className="text-[16px] leading-[1.4]">{item}</p>
+            <div className="relative flex flex-col gap-4">
+              <FadeIn delay={0.4}>
+                <div className="flex h-[100px] md:h-[120px] items-center rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] p-6 shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                  <p className="text-[28px] md:text-[32px] font-medium leading-[1.3] text-[#0036d6]">
+                    <span className="text-[#5882ff]">NEW WAY</span>
+                    <span className="block text-[20px] md:text-[32px] font-bold text-[#0036d6]">WITH INTRENSIC MIND</span>
+                  </p>
                 </div>
+              </FadeIn>
+              {newWay.map((item, index) => (
+                <FadeIn key={item} delay={0.48 + index * 0.08}>
+                  <div className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] px-5 text-black shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                    <span className="flex h-6 w-6 items-center justify-center text-[#0036d6]">
+                      <CircleCheck className="h-[22px] w-[22px]" />
+                    </span>
+                    <p className="text-[16px] leading-[1.4]">{item}</p>
+                  </div>
+                </FadeIn>
               ))}
-            </FadeIn>
+            </div>
           </div>
           <FadeIn delay={0.6} className="flex justify-center">
             <SplitCtaButton href={primaryServicePath} label="See where our AI goes" className="bg-[#dde0ff]" />
