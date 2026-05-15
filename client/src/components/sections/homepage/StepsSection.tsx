@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 import FadeIn from "../../ui/FadeIn";
 
 const steps = [
@@ -44,8 +46,18 @@ export default function StepsSection() {
   const cardThreeX = useTransform(scrollYProgress, [0, 1], ["-120px", "0px"]);
   const cardThreeRotate = useTransform(scrollYProgress, [0, 1], [8, 0]);
 
+  const renderCard = (stepObj: any, isMobile = false) => (
+    <div className={`min-h-[350px] w-full max-w-[302px] mx-auto rounded-[16px] border border-[#f0f0f0] bg-[linear-gradient(135deg,_#fefeff_5%,_#f7f8f8_24%,_#f1f2f2_66%,_#ccd8ff_102%)] p-6 text-black shadow-[0px_4px_5px_rgba(212,214,215,0.17)] transition-transform lg:hover:-translate-y-2 lg:hover:shadow-xl ${isMobile ? "flex flex-col h-full" : ""}`}>
+      <p className="text-[32px] md:text-[40px] font-bold">{stepObj.step}</p>
+      <div className={`mt-4 space-y-3 ${isMobile ? "flex-1" : ""}`}>
+        <p className="text-[24px] md:text-[28px] font-medium text-[#0036d6]">{stepObj.title}</p>
+        <p className="text-[15px] md:text-[16px] text-[#5d5e63]">{stepObj.description}</p>
+      </div>
+    </div>
+  );
+
   return (
-    <section className="relative bg-[#001c34] px-6 pb-16 pt-16 md:pb-24 md:pt-20 text-white lg:px-20">
+    <section className="relative overflow-hidden bg-[#001c34] px-6 pb-16 pt-16 md:pb-24 md:pt-20 text-white lg:px-20">
       <img
         alt=""
         aria-hidden
@@ -57,23 +69,17 @@ export default function StepsSection() {
           <p className="text-[16px] md:text-[20px] text-[#b7b7b7]">Three steps from first conversation to measurable results.</p>
           <h2 className="text-[28px] md:text-[36px] font-medium text-[#efefef]">Getting started is straightforward</h2>
         </FadeIn>
-        {/* Cards row — relative wrapper so the dotted line can be absolutely positioned behind */}
+        
+        {/* Desktop View with Animations */}
         <div
           ref={sectionRef}
-          className="relative flex w-full flex-col items-center justify-center gap-6 lg:flex-row"
+          className="relative hidden w-full lg:flex flex-row items-center justify-center gap-6"
         >
-
           <motion.div
             className="flex items-center gap-6"
             style={{ zIndex: 10, position: "relative", x: cardOneX, rotate: cardOneRotate }}
           >
-            <div className="min-h-[350px] w-full max-w-[302px] rounded-[16px] border border-[#f0f0f0] bg-[linear-gradient(135deg,_#fefeff_5%,_#f7f8f8_24%,_#f1f2f2_66%,_#ccd8ff_102%)] p-6 text-black shadow-[0px_4px_5px_rgba(212,214,215,0.17)] transition-transform hover:-translate-y-2 hover:shadow-xl">
-              <p className="text-[32px] md:text-[40px] font-bold">{steps[0].step}</p>
-              <div className="mt-4 space-y-3">
-                <p className="text-[24px] md:text-[28px] font-medium text-[#0036d6]">{steps[0].title}</p>
-                <p className="text-[15px] md:text-[16px] text-[#5d5e63]">{steps[0].description}</p>
-              </div>
-            </div>
+            {renderCard(steps[0])}
           </motion.div>
 
           <motion.div
@@ -85,27 +91,47 @@ export default function StepsSection() {
               scale: cardTwoScale,
             }}
           >
-            <div className="min-h-[350px] w-full max-w-[302px] rounded-[16px] border border-[#f0f0f0] bg-[linear-gradient(135deg,_#fefeff_5%,_#f7f8f8_24%,_#f1f2f2_66%,_#ccd8ff_102%)] p-6 text-black shadow-[0px_4px_5px_rgba(212,214,215,0.17)] transition-transform hover:-translate-y-2 hover:shadow-xl">
-              <p className="text-[32px] md:text-[40px] font-bold">{steps[1].step}</p>
-              <div className="mt-4 space-y-3">
-                <p className="text-[24px] md:text-[28px] font-medium text-[#0036d6]">{steps[1].title}</p>
-                <p className="text-[15px] md:text-[16px] text-[#5d5e63]">{steps[1].description}</p>
-              </div>
-            </div>
+            {renderCard(steps[1])}
           </motion.div>
 
           <motion.div
             className="flex items-center gap-6"
             style={{ zIndex: 10, position: "relative", x: cardThreeX, rotate: cardThreeRotate }}
           >
-            <div className="min-h-[350px] w-full max-w-[302px] rounded-[16px] border border-[#f0f0f0] bg-[linear-gradient(135deg,_#fefeff_5%,_#f7f8f8_24%,_#f1f2f2_66%,_#ccd8ff_102%)] p-6 text-black shadow-[0px_4px_5px_rgba(212,214,215,0.17)] transition-transform hover:-translate-y-2 hover:shadow-xl">
-              <p className="text-[32px] md:text-[40px] font-bold">{steps[2].step}</p>
-              <div className="mt-4 space-y-3">
-                <p className="text-[24px] md:text-[28px] font-medium text-[#0036d6]">{steps[2].title}</p>
-                <p className="text-[15px] md:text-[16px] text-[#5d5e63]">{steps[2].description}</p>
-              </div>
-            </div>
+            {renderCard(steps[2])}
           </motion.div>
+        </div>
+
+        {/* Mobile View with Carousel */}
+        <div className="block lg:hidden w-full">
+          <FadeIn delay={0.2}>
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={16}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              pagination={{
+                clickable: true,
+                el: ".steps-pagination",
+              }}
+              onSlideChange={(swiper) => {}}
+              className="w-full !overflow-visible pb-4 pt-4"
+            >
+              {steps.map((stepObj, index) => (
+                <SwiperSlide key={index} className="!h-auto flex pb-12">
+                  {renderCard(stepObj, true)}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="mt-4 flex flex-col items-center gap-2">
+              <div className="steps-pagination flex justify-center !w-auto" />
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>

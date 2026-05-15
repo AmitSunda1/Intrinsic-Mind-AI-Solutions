@@ -35,8 +35,8 @@ export default function FAQ() {
   return (
     <section className="bg-white px-6 py-16 md:py-24 lg:px-20">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-12 lg:flex-row">
-        <FadeIn delay={0.1} className="flex max-w-[340px] flex-col gap-8">
-          <h2 className="text-[32px] md:text-[40px] font-semibold text-[#0a1314]">Do you have a question?</h2>
+        <FadeIn delay={0.1} className="mx-auto flex max-w-[340px] flex-col items-center gap-8 text-center lg:mx-0 lg:items-start lg:text-left">
+          <h2 className="text-[30px] md:text-[40px] font-semibold leading-tight text-[#0a1314]">Do you have a question?</h2>
           <SplitCtaButton
             href="/contactus"
             label="Ask Us Directly"

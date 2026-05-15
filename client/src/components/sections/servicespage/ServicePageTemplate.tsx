@@ -3,8 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
-import Header from "../../layout/Header";
-import Footer from "../../layout/Footer";
 import FadeIn from "../../ui/FadeIn";
 import SplitCtaButton from "../../ui/SplitCtaButton";
 
@@ -118,7 +116,6 @@ export default function ServicePageTemplate({
           backgroundPosition: "center",
         }}
       >
-        <Header />
 
         <div className="relative mx-auto grid w-full max-w-[1280px] items-center gap-12 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-20">
           <FadeIn className="flex flex-col gap-6">
@@ -186,22 +183,17 @@ export default function ServicePageTemplate({
         </div>
       </section>
 
+      {/* ── SITUATION SECTION ── */}
       <section className="relative bg-white px-6 py-24 text-[#101828] lg:px-20">
         <div className="relative mx-auto flex w-full max-w-[980px] flex-col items-center text-center">
-          <img
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[140px] w-full max-w-[560px] -translate-x-1/2 opacity-80"
-            src="/assets/services/Vector.webp"
-            style={{ zIndex: 0, maxWidth: "304px", marginTop: "15px" }}
-          />
           <p className="text-[20px] text-[#5D5E63]">The Situation</p>
           <h2 className="mt-3 text-[28px] font-semibold text-[#0a1314] md:text-[36px]">
             {content.situationHeading.prefix}{" "}
             <span className="text-[#0036d6]">{content.situationHeading.highlight}</span>
           </h2>
 
-          <div className="relative z-10 mt-8 ml-10 flex flex-wrap items-center justify-center gap-8">
+          {/* Tools pills */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             {content.situationTools.map((tool) => (
               <span
                 key={tool}
@@ -212,33 +204,39 @@ export default function ServicePageTemplate({
             ))}
           </div>
 
-          <div className="relative z-10 mt-6 w-full max-w-[760px]">
-            <div className="rounded-md bg-white px-6 py-3 text-[18px] text-[#000000]">
+          {/* Arrow */}
+          <div className="my-4 text-[20px] text-[#6b7280]">↓</div>
+
+          {/* Summary box */}
+          <div className="w-full max-w-[760px]">
+            <div className="rounded-2xl border border-[#dde0ff] bg-[#eff3ff] px-6 py-4 text-[18px] text-[#000000]">
               {content.situationSummary}
             </div>
           </div>
 
-          <div className="relative z-10 mt-8 w-full max-w-[842px]">
-            <div className="grid gap-5">
+          {/* Cards with arrows */}
+          <div className="mt-0 w-full max-w-[842px]">
+            <div className="grid">
               {content.situationCards.map((card) => (
-                <div
-                  key={card.title}
-                  className="flex gap-20 rounded-2xl border border-[#dde0ff] bg-[#eff3ff] px-6 py-5 text-left text-[#0a1314]"
-                >
-                  <div className="flex h-[78px] w-[89px] shrink-0 items-center justify-center rounded-xl">
-                    <img
-                      alt=""
-                      className="h-full w-full object-contain"
-                      src="/assets/services/Icon.webp"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[16px] font-semibold text-[#0a1314]">
-                      {card.title}
-                    </p>
-                    <p className="mt-1 text-[14px] text-[#5d5e63]">
-                      {card.description}
-                    </p>
+                <div key={card.title}>
+                  {/* Arrow before each card */}
+                  <div className="my-4 text-[20px] text-[#6b7280]">↓</div>
+                  <div className="flex gap-6 rounded-2xl border border-[#dde0ff] bg-[#eff3ff] px-6 py-5 text-left text-[#0a1314]">
+                    <div className="flex h-[78px] w-[89px] shrink-0 items-center justify-center rounded-xl">
+                      <img
+                        alt=""
+                        className="h-full w-full object-contain"
+                        src="/assets/services/Icon.webp"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-[16px] font-semibold text-[#0a1314]">
+                        {card.title}
+                      </p>
+                      <p className="mt-1 text-[14px] text-[#5d5e63]">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -480,7 +478,6 @@ export default function ServicePageTemplate({
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

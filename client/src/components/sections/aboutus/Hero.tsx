@@ -53,7 +53,7 @@ export default function AboutHero() {
 		<section className="bg-white px-6 pb-16 pt-32 lg:pb-24 lg:pt-40 text-[#101828] lg:px-20">
 			<div className="mx-auto flex w-full max-w-[1440px] flex-col gap-16 ">
 				<div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
-					<FadeIn className="space-y-6">
+					<FadeIn className="space-y-6 order-2 lg:order-1">
 						<div className="space-y-4">
 							<h1 className="text-[32px] font-semibold leading-[1.2] text-[#101828] md:text-[36px] ">
 								From Enterprise Architect to AI Transformation Leader
@@ -82,7 +82,7 @@ export default function AboutHero() {
 						</div>
 					</FadeIn>
 
-					<FadeIn delay={0.2} className="flex justify-center lg:justify-start">
+					<FadeIn delay={0.2} className="flex justify-center lg:justify-start order-1 lg:order-2">
 						<div className="w-full max-w-[320px] rounded-3xl bg-white mx-auto lg:ml-10 transition-transform hover:scale-[1.02]">
 							<div className="">
 								<div className="">

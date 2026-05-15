@@ -1,3 +1,7 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 import FadeIn from "../../ui/FadeIn";
 import SplitCtaButton from "../../ui/SplitCtaButton";
 import { primaryServicePath, serviceLinks } from "../servicespage/serviceLinks";
@@ -41,8 +45,35 @@ const services = [
 ];
 
 export default function Services() {
+  const renderCard = (service: any) => (
+    <div className="flex w-full h-full min-h-[480px] flex-col justify-between rounded-[20px] bg-[#eff3ff] transition-transform md:hover:-translate-y-2 md:hover:shadow-lg">
+      <div className="px-6 md:px-10 pb-4 pt-6">
+        <div className="relative h-[240px] w-full overflow-hidden">
+          {service.images.map((image: any) => (
+            <img
+              key={`${service.title}-${image.src}`}
+              alt=""
+              className={`absolute object-contain ${image.className}`}
+              src={image.src}
+            />
+          ))}
+        </div>
+        <h3 className="mt-4 text-[20px] font-semibold text-[#0a1314]">{service.title}</h3>
+        <p className="mt-3 text-[16px] text-[#5d5e63]">{service.description}</p>
+      </div>
+      <div className="flex items-center justify-center pb-6 md:pb-4">
+        <SplitCtaButton
+          href={service.href}
+          label="See where our AI goes"
+          size="sm"
+          className="bg-[#dde0ff]"
+        />
+      </div>
+    </div>
+  );
+
   return (
-    <section className="bg-white px-6 py-16 md:py-24 lg:px-20">
+    <section className="bg-white px-6 py-16 md:py-24 lg:px-20 overflow-hidden">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-8 md:gap-10">
         <FadeIn className="text-center">
           <h2 className="text-[28px] md:text-[32px] font-semibold text-[#0a1314]">
@@ -50,33 +81,46 @@ export default function Services() {
           </h2>
           <p className="mt-2 text-[18px] md:text-[20px] text-[#717171]">Built around your setup. Measured against real outcomes.</p>
         </FadeIn>
-        <div className="grid gap-8 md:grid-cols-2">
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid gap-8 md:grid-cols-2">
           {services.map((service, index) => (
-            <FadeIn key={service.title} delay={0.2 + index * 0.1} className="flex min-h-[480px] flex-col justify-between rounded-[20px] bg-[#eff3ff] transition-transform hover:-translate-y-2 hover:shadow-lg">
-              <div className="px-10 pb-4 pt-6">
-                <div className="relative h-[240px] w-full overflow-hidden">
-                  {service.images.map((image) => (
-                    <img
-                      key={`${service.title}-${image.src}`}
-                      alt=""
-                      className={`absolute object-contain ${image.className}`}
-                      src={image.src}
-                    />
-                  ))}
-                </div>
-                <h3 className="mt-4 text-[20px] font-semibold text-[#0a1314]">{service.title}</h3>
-                <p className="mt-3 text-[16px] text-[#5d5e63]">{service.description}</p>
-              </div>
-              <div className="flex items-center justify-center pb-4">
-                <SplitCtaButton
-                  href={service.href}
-                  label="See where our AI goes"
-                  size="sm"
-                  className="bg-[#dde0ff]"
-                />
-              </div>
+            <FadeIn key={service.title} delay={0.2 + index * 0.1} className="h-full">
+              {renderCard(service)}
             </FadeIn>
           ))}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="block md:hidden w-full">
+          <FadeIn delay={0.2}>
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={20}
+              slidesPerView={1.05}
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              pagination={{
+                clickable: true,
+                el: ".services-pagination",
+              }}
+              onSlideChange={(swiper) => {}}
+              className="w-full !overflow-visible"
+            >
+              {services.map((service, index) => (
+                <SwiperSlide key={index} className="!h-auto flex pb-12">
+                  {renderCard(service)}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="mt-4 flex flex-col items-center gap-2">
+              <div className="services-pagination flex justify-center !w-auto" />
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>

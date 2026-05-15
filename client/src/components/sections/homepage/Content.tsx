@@ -51,8 +51,8 @@ const newWay = [
 export default function Content() {
   return (
     <>
-      <section className="relative mt-120 flex z-0 flex-col items-center gap-16 py-16 md:py-24">
-        <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 text-center grid-cols-1 sm:grid-cols-3 -mt-20 md:-mt-30">
+      <section className="relative mt-120 flex z-0 flex-col items-center gap-16 pt-4 pb-16 md:py-24">
+        <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 text-center grid-cols-1 sm:grid-cols-3 -mt-32 md:-mt-30">
           {stats.map((item, index) => (
             <FadeIn key={item.value} delay={index * 0.1} className="space-y-3">
               <p className="text-[40px] font-bold text-[#323c9a]">{item.value}</p>
@@ -108,11 +108,11 @@ export default function Content() {
               </FadeIn>
               {oldWay.map((item, index) => (
                 <FadeIn key={item} delay={0.28 + index * 0.08}>
-                  <div className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#ff6868] bg-[linear-gradient(171deg,_#ffffff_9%,_#ffcdcd_116%)] px-5 text-[#5b5b5b] shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg">
-                    <span className="flex h-6 w-6 items-center justify-center text-[#da0000]">
+                  <div className="flex min-h-[112px] h-auto py-3 items-center gap-3 rounded-[22px] border border-[#ff6868] bg-[linear-gradient(171deg,_#ffffff_9%,_#ffcdcd_116%)] px-5 text-[#5b5b5b] shadow-[0px_0px_24px_rgba(255,199,199,0.38)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center text-[#da0000]">
                       <CircleX className="h-[22px] w-[22px]" />
                     </span>
-                    <p className="text-[16px] leading-[1.4]">{item}</p>
+                    <p className="text-[15px] md:text-[16px] leading-[1.4]">{item}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -135,11 +135,11 @@ export default function Content() {
               </FadeIn>
               {newWay.map((item, index) => (
                 <FadeIn key={item} delay={0.48 + index * 0.08}>
-                  <div className="flex h-[112px] items-center gap-3 rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] px-5 text-black shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg">
-                    <span className="flex h-6 w-6 items-center justify-center text-[#0036d6]">
+                  <div className="flex min-h-[112px] h-auto py-3 items-center gap-3 rounded-[22px] border border-[#56c4ff] bg-[#f0f0ff] px-5 text-black shadow-[0px_0px_20px_rgba(230,228,255,0.24)] transition-transform hover:-translate-y-1 hover:shadow-lg">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center text-[#0036d6]">
                       <CircleCheck className="h-[22px] w-[22px]" />
                     </span>
-                    <p className="text-[16px] leading-[1.4]">{item}</p>
+                    <p className="text-[15px] md:text-[16px] leading-[1.4]">{item}</p>
                   </div>
                 </FadeIn>
               ))}
