@@ -319,7 +319,7 @@ export default function ServicePageTemplate({
         />
 
         <div className="relative mx-auto mt-12 flex w-full max-w-[1280px] flex-col gap-12">
-          <FadeIn className="mx-auto flex w-fit flex-col gap-8 lg:flex-row lg:items-center lg:gap-16">
+          <FadeIn viewportMargin="200px" className="mx-auto flex w-fit flex-col gap-8 lg:flex-row lg:items-center lg:gap-16">
             <h2 className="shrink-0 text-left text-[36px] font-bold leading-[1.3] tracking-[-0.02em]">
               <span className="block text-white">Four phases.</span>
               <span className="block text-[#7aa2ff]">Zero guesswork.</span>

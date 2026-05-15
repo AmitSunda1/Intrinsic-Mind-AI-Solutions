@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "../ui/Logo";
 import SplitCtaButton from "../ui/SplitCtaButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
 	serviceLinks,
@@ -19,6 +19,18 @@ export default function Header({ className = "", logoVariant = "dark" }: HeaderP
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
 	const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+
+	useEffect(() => {
+		if (isMobileMenuOpen) {
+			document.body.classList.add("overflow-hidden");
+		} else {
+			document.body.classList.remove("overflow-hidden");
+		}
+
+		return () => {
+			document.body.classList.remove("overflow-hidden");
+		};
+	}, [isMobileMenuOpen]);
 
 	const headerBg = logoVariant === "dark" ? "bg-[#00162a]/70" : "bg-white/70";
 	const headerBorder = logoVariant === "dark" ? "border-white/10" : "border-black/5";

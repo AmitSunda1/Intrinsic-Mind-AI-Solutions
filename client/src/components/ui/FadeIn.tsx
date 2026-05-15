@@ -10,6 +10,7 @@ type FadeInProps = {
 	fullWidth?: boolean;
 	className?: string;
 	style?: CSSProperties;
+	viewportMargin?: string;
 };
 
 export default function FadeIn({
@@ -19,6 +20,7 @@ export default function FadeIn({
 	fullWidth = false,
 	className = "",
 	style,
+	viewportMargin = "0px",
 }: FadeInProps) {
 	const directions = {
 		up: { y: 40, x: 0 },
@@ -39,7 +41,7 @@ export default function FadeIn({
 				x: 0,
 				y: 0,
 			}}
-			viewport={{ once: true, margin: "0px" }}
+			viewport={{ once: true, margin: viewportMargin }}
 			transition={{
 				duration: 0.7,
 				delay: delay,
